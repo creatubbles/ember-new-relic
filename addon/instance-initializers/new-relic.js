@@ -8,6 +8,10 @@ export function initialize() {
   }
 
   function handleError(error) {
+    if (error && error.message === 'TransitionAborted') {
+      return;
+    }
+
     try {
       NREUM.noticeError(error);
     } catch(e) {
